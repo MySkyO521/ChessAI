@@ -44,7 +44,7 @@ class game_Status():
         self.moveLog.append(move)
         print(self.moveLog)
 
-
+    #駒を戻せるように保存しておく
     def undo_move(self, ):
         if len(self.moveLog) != 0:
             move = self.moveLog.pop()
@@ -256,7 +256,7 @@ class game_Status():
 
         #row:増加、col:増加
         for row_num in range(row + 1, 8):
-            if col + (row - row_num) < 8:
+            if col - (row - row_num) < 8:
                 end_row = row_num
                 end_col = col - (row -row_num)
                 if self.board[end_row][end_col] == '--':
@@ -271,3 +271,5 @@ class game_Status():
                     move = (str(row) + str(col), str(end_row) + str(end_col))
                     moves.append(move)
                     break
+    
+    
